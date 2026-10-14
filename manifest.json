@@ -1,0 +1,24 @@
+{
+  "name": "Community Emergency Response & Resource Management System",
+  "short_name": "Community Emergency",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#DC2626",
+  "orientation": "portrait",
+  "description": "Mobile emergency response app connecting citizens with hospitals, ambulances, blood donors, volunteers and relief resources.",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

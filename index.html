@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Community Emergency Response & Resource Management System</title>
+  
+  <!-- Android & Mobile Web App Meta -->
+  <meta name="theme-color" content="#DC2626">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Mobile-friendly Community Emergency Response and Resource Management System prototype for rapid crisis support, hospitals, ambulances, blood donors, and volunteer coordination.">
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚨</text></svg>">
+
+  <!-- Leaflet CSS for Map View (Gracefully falls back to offline tactical radar if CDN unreachable) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- App Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Android Device Shell & Container -->
+  <div id="device-shell-frame">
+    <!-- Smartphone Camera Notch (Shown in mockup frame mode) -->
+    <div class="camera-notch"></div>
+
+    <!-- Android System Status Bar -->
+    <div class="android-status-bar">
+      <span id="status-bar-clock">12:45</span>
+      <div class="status-bar-icons">
+        <span title="5G Emergency Carrier">5G</span>
+        <span title="GPS Active">🛰️</span>
+        <span title="WiFi">📶</span>
+        <span title="Battery 100%">🔋 100%</span>
+      </div>
+    </div>
+
+    <!-- Primary Scrollable View Area -->
+    <main id="view-scroll-area">
+      <div id="view-container">
+        <!-- Rendered dynamically by Router -->
+      </div>
+    </main>
+
+    <!-- Bottom Navigation Bar (Material 3 Android Standard) -->
+    <nav id="bottom-nav-bar" aria-label="Bottom Navigation">
+      <button class="bottom-nav-item active" id="nav-item-home" onclick="window.CER_STATE.navigate('home')">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+      </button>
+
+      <button class="bottom-nav-item emergency-nav" id="nav-item-emergency" onclick="window.CER_STATE.navigate('sos')">
+        <span class="nav-icon">🚨</span>
+        <span class="nav-label">Emergency</span>
+      </button>
+
+      <button class="bottom-nav-item" id="nav-item-services" onclick="window.openServicesActionSheet()">
+        <span class="nav-icon">📍</span>
+        <span class="nav-label">Services</span>
+      </button>
+
+      <button class="bottom-nav-item" id="nav-item-alerts" onclick="window.CER_STATE.navigate('alerts')">
+        <span class="nav-icon">📢</span>
+        <span class="nav-label">Alerts</span>
+      </button>
+
+      <button class="bottom-nav-item" id="nav-item-profile" onclick="window.CER_STATE.navigate('profile')">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Profile</span>
+      </button>
+
+      <!-- Android Home Bar Pill -->
+      <div class="android-gesture-bar"></div>
+    </nav>
+  </div>
+
+  <!-- Global Modal Dialog Overlay -->
+  <div id="app-modal-overlay">
+    <div id="app-modal-content"></div>
+  </div>
+
+  <!-- Global Toast Notification Layer -->
+  <div id="toast-container"></div>
+
+  <!-- External Leaflet JS (with resilient offline fallback) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Core Architecture Scripts -->
+  <script src="js/db.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/map.js"></script>
+
+  <!-- UI View Components -->
+  <script src="js/components/splash.js"></script>
+  <script src="js/components/auth.js"></script>
+  <script src="js/components/home.js"></script>
+  <script src="js/components/sos.js"></script>
+  <script src="js/components/hospitals.js"></script>
+  <script src="js/components/ambulances.js"></script>
+  <script src="js/components/blood.js"></script>
+  <script src="js/components/volunteers.js"></script>
+  <script src="js/components/resources.js"></script>
+  <script src="js/components/alerts.js"></script>
+  <script src="js/components/disaster_alerts.js"></script>
+  <script src="js/components/incident_report.js"></script>
+  <script src="js/components/incident_status.js"></script>
+  <script src="js/components/profile.js"></script>
+  <script src="js/components/notifications.js"></script>
+  <script src="js/components/admin.js"></script>
+
+  <!-- Main Controller & Router Entry -->
+  <script src="js/app.js"></script>
+</body>
+</html>
